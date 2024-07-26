@@ -1,0 +1,105 @@
+\doxysection{Entity Class Reference}
+\hypertarget{class_entity}{}\label{class_entity}\index{Entity@{Entity}}
+
+
+Whatever "{}object"{} that is in scene and has a graphic and a physic component.  
+
+
+
+
+{\ttfamily \#include $<$Entity.\+h$>$}
+
+Inheritance diagram for Entity\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_entity}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bt\+Rigid\+Body \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_entity_a25e023171a22a1d0824e577b5cea8838}{get\+Body}} () const
+\begin{DoxyCompactList}\small\item\em Gets the rigidbody component of the entity. \end{DoxyCompactList}\item 
+glm\+::mat4 \mbox{\hyperlink{class_entity_a3dc6842a50666f80b6ccecca8100f303}{get\+Transform}} () const
+\begin{DoxyCompactList}\small\item\em Gets the transform component of the entity. \end{DoxyCompactList}\item 
+\Hypertarget{class_entity_aebfa3a494c9239e6c8def3c2483014f2}\label{class_entity_aebfa3a494c9239e6c8def3c2483014f2} 
+Node \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+\+Graphic\+\_\+\+Model} ()
+\item 
+\Hypertarget{class_entity_a9e63c21aff827eab995fa33a8f0e73c2}\label{class_entity_a9e63c21aff827eab995fa33a8f0e73c2} 
+void {\bfseries add\+Graphic\+Component} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_graphic___component}{Graphic\+\_\+\+Component}} $>$ model)
+\item 
+\Hypertarget{class_entity_a545ca0fdf45673d166e814645e68a599}\label{class_entity_a545ca0fdf45673d166e814645e68a599} 
+void {\bfseries add\+Physics\+Component} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_physics___component}{Physics\+\_\+\+Component}} $>$ model)
+\item 
+\Hypertarget{class_entity_aef10f712407fd20dfb1a5f4ea9a5960a}\label{class_entity_aef10f712407fd20dfb1a5f4ea9a5960a} 
+void {\bfseries set\+Active} (bool state)
+\begin{DoxyCompactList}\small\item\em Makes the object visible when is selected. \end{DoxyCompactList}\item 
+\Hypertarget{class_entity_aea1c1568b4123d989c5310697030ad77}\label{class_entity_aea1c1568b4123d989c5310697030ad77} 
+bool {\bfseries is\+Active} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_entity_afdd85dcb145083196ad9dbdc119283ae}\label{class_entity_afdd85dcb145083196ad9dbdc119283ae} 
+bt\+Vector3 {\bfseries position}
+\item 
+\Hypertarget{class_entity_a6f0dc05233e332b9b7517271d41c55f7}\label{class_entity_a6f0dc05233e332b9b7517271d41c55f7} 
+bt\+Vector3 {\bfseries rotation}
+\item 
+\Hypertarget{class_entity_ac2fb28628eaec09adb9cee51f7173877}\label{class_entity_ac2fb28628eaec09adb9cee51f7173877} 
+bt\+Vector3 {\bfseries scale}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Whatever "{}object"{} that is in scene and has a graphic and a physic component. 
+
+\begin{DoxyAuthor}{Author}
+Lucas Garcia 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/06-\/05
+\end{DoxyDate}
+
+
+Adds a graphic component for visualization and a physic component for having collisions in the scene 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_entity_a25e023171a22a1d0824e577b5cea8838}\index{Entity@{Entity}!getBody@{getBody}}
+\index{getBody@{getBody}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getBody()}{getBody()}}
+{\footnotesize\ttfamily \label{class_entity_a25e023171a22a1d0824e577b5cea8838} 
+bt\+Rigid\+Body \texorpdfstring{$\ast$}{*} Entity\+::get\+Body (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Gets the rigidbody component of the entity. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em bt\+Rigid\+Body\texorpdfstring{$\ast$}{*}} & Gets the physic component of the entity in a pointer of a bt\+Rigid\+Body class of Bullet. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_entity_a3dc6842a50666f80b6ccecca8100f303}\index{Entity@{Entity}!getTransform@{getTransform}}
+\index{getTransform@{getTransform}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getTransform()}{getTransform()}}
+{\footnotesize\ttfamily \label{class_entity_a3dc6842a50666f80b6ccecca8100f303} 
+glm\+::mat4 Entity\+::get\+Transform (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Gets the transform component of the entity. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em mat4} & Gets the transform matrix in a mat4 class of glm. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Animation\+Practice\+Bullet\+Lucas\+Garcia\+Dominguez/3\+D/\+Practice Bullet/code/headers/Entity.\+h\end{DoxyCompactItemize}

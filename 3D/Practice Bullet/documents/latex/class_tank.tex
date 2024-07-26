@@ -1,0 +1,84 @@
+\doxysection{Tank Class Reference}
+\hypertarget{class_tank}{}\label{class_tank}\index{Tank@{Tank}}
+Inheritance diagram for Tank\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_tank}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_tank_a30ff1c4254bef726ad9da6975798d605}\label{class_tank_a30ff1c4254bef726ad9da6975798d605} 
+void {\bfseries shoot\+Projectile} (shared\+\_\+ptr$<$ \mbox{\hyperlink{class_graphics__3_d___system}{Graphics\+\_\+3\+D\+\_\+\+System}} $>$ graphics\+System, shared\+\_\+ptr$<$ \mbox{\hyperlink{class_physics__3_d___system}{Physics\+\_\+3\+D\+\_\+\+System}} $>$ physics\+System, std\+::map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_entity}{Entity}} $>$ $>$ entities)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_entity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+bt\+Rigid\+Body \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_entity_a25e023171a22a1d0824e577b5cea8838}{get\+Body}} () const
+\begin{DoxyCompactList}\small\item\em Gets the rigidbody component of the entity. \end{DoxyCompactList}\item 
+glm\+::mat4 \mbox{\hyperlink{class_entity_a3dc6842a50666f80b6ccecca8100f303}{get\+Transform}} () const
+\begin{DoxyCompactList}\small\item\em Gets the transform component of the entity. \end{DoxyCompactList}\item 
+Node \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+\+Graphic\+\_\+\+Model} ()
+\item 
+void {\bfseries add\+Graphic\+Component} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_graphic___component}{Graphic\+\_\+\+Component}} $>$ model)
+\item 
+void {\bfseries add\+Physics\+Component} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_physics___component}{Physics\+\_\+\+Component}} $>$ model)
+\item 
+void {\bfseries set\+Active} (bool state)
+\begin{DoxyCompactList}\small\item\em Makes the object visible when is selected. \end{DoxyCompactList}\item 
+bool {\bfseries is\+Active} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_tank_a3c858feb61fdd147b172a4771857bc69}\label{class_tank_a3c858feb61fdd147b172a4771857bc69} 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{class_entity}{Entity}} $>$ {\bfseries left\+Track}
+\item 
+\Hypertarget{class_tank_a6e143ab32589864e0a135c48d316390b}\label{class_tank_a6e143ab32589864e0a135c48d316390b} 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{class_entity}{Entity}} $>$ {\bfseries right\+Track}
+\item 
+\Hypertarget{class_tank_a5910c1d7564e7ba54eb54ab480ea99ef}\label{class_tank_a5910c1d7564e7ba54eb54ab480ea99ef} 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{class_entity}{Entity}} $>$ {\bfseries chasis}
+\item 
+\Hypertarget{class_tank_a5f3289c61c125381773e60904ffc849c}\label{class_tank_a5f3289c61c125381773e60904ffc849c} 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{class_entity}{Entity}} $>$ {\bfseries turret}
+\item 
+\Hypertarget{class_tank_a459782d992709d809b4bd67d42c04744}\label{class_tank_a459782d992709d809b4bd67d42c04744} 
+shared\+\_\+ptr$<$ \mbox{\hyperlink{class_entity}{Entity}} $>$ {\bfseries canyon}
+\item 
+\Hypertarget{class_tank_aed443c1eb417d9886851a36e50c5db8f}\label{class_tank_aed443c1eb417d9886851a36e50c5db8f} 
+shared\+\_\+ptr$<$ bt\+Hinge\+Constraint $>$ {\bfseries left\+Track\+Constraint}
+\item 
+\Hypertarget{class_tank_ad1618338d9b531e93d57dd1d0cf57606}\label{class_tank_ad1618338d9b531e93d57dd1d0cf57606} 
+shared\+\_\+ptr$<$ bt\+Hinge\+Constraint $>$ {\bfseries right\+Track\+Constraint}
+\item 
+\Hypertarget{class_tank_ae76aaff7619837745ca94e2fe479f452}\label{class_tank_ae76aaff7619837745ca94e2fe479f452} 
+shared\+\_\+ptr$<$ bt\+Fixed\+Constraint $>$ {\bfseries turret\+Constraint}
+\item 
+\Hypertarget{class_tank_ac0e5bbcde50ad424fb1c954858e2a43a}\label{class_tank_ac0e5bbcde50ad424fb1c954858e2a43a} 
+shared\+\_\+ptr$<$ bt\+Fixed\+Constraint $>$ {\bfseries canyon\+Constraint}
+\item 
+\Hypertarget{class_tank_aa11d0232d85ee3291a9fe29cb76a41b0}\label{class_tank_aa11d0232d85ee3291a9fe29cb76a41b0} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_projectile}{Projectile}} $>$ {\bfseries projectile}
+\item 
+\Hypertarget{class_tank_ac6bdd320f48106467742db79b265c749}\label{class_tank_ac6bdd320f48106467742db79b265c749} 
+vector$<$ shared\+\_\+ptr$<$ \mbox{\hyperlink{class_projectile}{Projectile}} $>$ $>$ {\bfseries projectiles}
+\item 
+\Hypertarget{class_tank_abe941706a9482ccfbefef1f06bdecd5d}\label{class_tank_abe941706a9482ccfbefef1f06bdecd5d} 
+size\+\_\+t {\bfseries next\+Projectile\+Index}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_entity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+bt\+Vector3 {\bfseries position}
+\item 
+bt\+Vector3 {\bfseries rotation}
+\item 
+bt\+Vector3 {\bfseries scale}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Animation\+Practice\+Bullet\+Lucas\+Garcia\+Dominguez/3\+D/\+Practice Bullet/code/headers/Tank.\+h\end{DoxyCompactItemize}

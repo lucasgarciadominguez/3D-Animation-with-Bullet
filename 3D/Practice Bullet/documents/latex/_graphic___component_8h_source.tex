@@ -1,0 +1,40 @@
+\doxysection{Graphic\+\_\+\+Component.\+h}
+\hypertarget{_graphic___component_8h_source}{}\label{_graphic___component_8h_source}\index{D:/AnimationPracticeBulletLucasGarciaDominguez/3D/Practice Bullet/code/headers/Graphic\_Component.h@{D:/AnimationPracticeBulletLucasGarciaDominguez/3D/Practice Bullet/code/headers/Graphic\_Component.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/**********************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*Project\ \ \ \ \ \ \ \ \ \ \ :\ Bullet3D\ Practice}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*Author\ :\ Lucas\ García}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*Purpose\ :\ Physics\ Practice\ using\ Bullet\ that\ moves\ a\ tank\ and\ other\ features}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{**********************************************************************/}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <btBulletDynamicsCommon.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <Render\_Node.hpp>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00020\ \textcolor{keyword}{using\ namespace\ }glt;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_graphic___component}{Graphic\_Component}}\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ std::shared\_ptr<\ Node\ >\ model;}
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_graphic___component}{Graphic\_Component}}(std::shared\_ptr<\ Node\ >\ newModel)\ :\ model(newModel)\ \{\};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ Node*\ getModel()}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ model.get();}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \};}
+
+\end{DoxyCode}

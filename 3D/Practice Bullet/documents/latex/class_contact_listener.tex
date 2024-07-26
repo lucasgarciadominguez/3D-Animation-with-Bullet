@@ -1,0 +1,56 @@
+\doxysection{Contact\+Listener Class Reference}
+\hypertarget{class_contact_listener}{}\label{class_contact_listener}\index{ContactListener@{ContactListener}}
+
+
+Gets important info from selected contacts and enable some methods when this contacts are solved.  
+
+
+
+
+{\ttfamily \#include $<$Contact\+Listener.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_contact_listener_a73894a0287a9557dd4b139196b2ea193}\label{class_contact_listener_a73894a0287a9557dd4b139196b2ea193} 
+void {\bfseries add\+Key} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_entity}{Entity}} $>$ new\+Key)
+\item 
+\Hypertarget{class_contact_listener_a00373c23ad0613bf079b71130c12c607}\label{class_contact_listener_a00373c23ad0613bf079b71130c12c607} 
+void {\bfseries add\+Tank} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_tank}{Tank}} $>$ new\+Tank)
+\item 
+\Hypertarget{class_contact_listener_a837c5cd9b10cb36bd75ce039491611d2}\label{class_contact_listener_a837c5cd9b10cb36bd75ce039491611d2} 
+void {\bfseries add\+Door} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_entity}{Entity}} $>$ new\+Door)
+\item 
+\Hypertarget{class_contact_listener_a668e3fa84dfb4a547ee1c5328a86be21}\label{class_contact_listener_a668e3fa84dfb4a547ee1c5328a86be21} 
+void {\bfseries Enable\+Door} ()
+\begin{DoxyCompactList}\small\item\em The door moves from a point to another during certain time. \end{DoxyCompactList}\item 
+\Hypertarget{class_contact_listener_a845e69f74342be4ebb2d77805af28b97}\label{class_contact_listener_a845e69f74342be4ebb2d77805af28b97} 
+void {\bfseries Run\+Contacts} (bt\+Dynamics\+World \&dynamics\+World)
+\begin{DoxyCompactList}\small\item\em If the contact is between the key and some of the tank pieces, then the door is open. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_contact_listener_ab61242f19e1b2a556dd5e9b1f25be862}\label{class_contact_listener_ab61242f19e1b2a556dd5e9b1f25be862} 
+bool {\bfseries open\+Door} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gets important info from selected contacts and enable some methods when this contacts are solved. 
+
+\begin{DoxyAuthor}{Author}
+Lucas Garcia 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/06-\/05
+\end{DoxyDate}
+
+
+Enables the door opening when the key is contacted by the tank. The door moves from a selected point to another. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Animation\+Practice\+Bullet\+Lucas\+Garcia\+Dominguez/3\+D/\+Practice Bullet/code/headers/Contact\+Listener.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,63 @@
+\doxysection{Tank.\+h}
+\hypertarget{_tank_8h_source}{}\label{_tank_8h_source}\index{D:/AnimationPracticeBulletLucasGarciaDominguez/3D/Practice Bullet/code/headers/Tank.h@{D:/AnimationPracticeBulletLucasGarciaDominguez/3D/Practice Bullet/code/headers/Tank.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/**********************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*Project\ \ \ \ \ \ \ \ \ \ \ :\ Bullet3D\ Practice}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*Author\ :\ Lucas\ García}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*Purpose\ :\ Physics\ Practice\ using\ Bullet\ that\ moves\ a\ tank\ and\ other\ features}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{**********************************************************************/}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <btBulletDynamicsCommon.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <Render\_Node.hpp>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}Graphic\_Component.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}Physics\_Component.h"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}Graphics\_3D\_System.h"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}Physics\_3D\_System.h"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}Entity.h"{}}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00026\ \textcolor{keyword}{using\ namespace\ }glt;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_projectile}{Projectile}};}
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_graphics__3_d___system}{Graphics\_3D\_System}};}
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_physics__3_d___system}{Physics\_3D\_System}};}
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_graphic___component}{Graphic\_Component}};}
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ \ }\mbox{\hyperlink{class_physics___component}{Physics\_Component}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tank}{Tank}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_entity}{Entity}}\{}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tank}{Tank}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tank}{\string~Tank}}();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ shootProjectile(shared\_ptr<Graphics\_3D\_System>\ graphicsSystem,\ shared\_ptr<Physics\_3D\_System>\ physicsSystem,}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ std::map<std::string,\ std::shared\_ptr<Entity>>\ entities);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ shared\_ptr<Entity>\ leftTrack;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ shared\_ptr<Entity>\ rightTrack;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ shared\_ptr<Entity>\ chasis;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ shared\_ptr<Entity>\ turret;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ shared\_ptr<Entity>\ canyon;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ shared\_ptr<btHingeConstraint>\ leftTrackConstraint;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ shared\_ptr<btHingeConstraint>\ rightTrackConstraint;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ shared\_ptr<btFixedConstraint>\ turretConstraint;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ shared\_ptr<btFixedConstraint>\ canyonConstraint;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ std::shared\_ptr<Projectile>\ projectile;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ vector<\ shared\_ptr<\ Projectile\ >\ >\ projectiles;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ nextProjectileIndex;\ \textcolor{comment}{//\ Índice\ del\ siguiente\ proyectil\ disponible}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,56 @@
+\doxysection{Platform.\+h}
+\hypertarget{_platform_8h_source}{}\label{_platform_8h_source}\index{D:/AnimationPracticeBulletLucasGarciaDominguez/3D/Practice Bullet/code/headers/Platform.h@{D:/AnimationPracticeBulletLucasGarciaDominguez/3D/Practice Bullet/code/headers/Platform.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/**********************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*Project\ \ \ \ \ \ \ \ \ \ \ :\ Bullet3D\ Practice}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*Author\ :\ Lucas\ García}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*Purpose\ :\ Physics\ Practice\ using\ Bullet\ that\ moves\ a\ tank\ and\ other\ features}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{**********************************************************************/}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <btBulletDynamicsCommon.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}Entity.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_platform}{Platform}}\ :\textcolor{keyword}{public}\ \mbox{\hyperlink{class_entity}{Entity}}\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \ std::shared\_ptr<btVector3>\ startPoint;}
+\DoxyCodeLine{00020\ \ \ \ \ \ std::shared\_ptr<btVector3>\ \ endPoint;}
+\DoxyCodeLine{00021\ \ \ \ \ \ std::shared\_ptr<btVector3>\ \ velocity;}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_platform}{Platform}}()\ }
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ startPoint\ =\ make\_shared<\ btVector3>(10,\ -\/1.,\ -\/20);}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ endPoint\ =\ make\_shared<\ btVector3>(10,\ -\/1,\ 20);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ velocity\ =\ make\_shared<\ btVector3>(0,\ 0,\ 0.025);}
+\DoxyCodeLine{00027\ \ \ \ \ \}\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_platform}{\string~Platform}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ movePlatform(\ )}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ btTransform\ transform;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_entity_a25e023171a22a1d0824e577b5cea8838}{getBody}}()-\/>getMotionState()-\/>getWorldTransform(transform);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ btVector3\ currentPosition\ =\ transform.getOrigin();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ platform\ has\ reached\ the\ end\ point}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((currentPosition\ -\/\ *endPoint).length()\ <\ velocity-\/>length())\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reverse\ direction}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ std::swap(startPoint,\ endPoint);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ *velocity\ =\ -\/*velocity;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Update\ the\ position\ of\ the\ platform}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ btVector3\ newPosition\ =\ currentPosition\ +\ *velocity;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ transform.setOrigin(newPosition);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_entity_a25e023171a22a1d0824e577b5cea8838}{getBody}}()-\/>getMotionState()-\/>setWorldTransform(transform);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_entity_a25e023171a22a1d0824e577b5cea8838}{getBody}}()-\/>setWorldTransform(transform);}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \};}
+
+\end{DoxyCode}

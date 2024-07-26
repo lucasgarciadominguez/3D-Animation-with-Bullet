@@ -1,0 +1,68 @@
+\doxysection{Scene.\+h}
+\hypertarget{_scene_8h_source}{}\label{_scene_8h_source}\index{D:/AnimationPracticeBulletLucasGarciaDominguez/3D/Practice Bullet/code/headers/Scene.h@{D:/AnimationPracticeBulletLucasGarciaDominguez/3D/Practice Bullet/code/headers/Scene.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/**********************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*Project\ \ \ \ \ \ \ \ \ \ \ :\ Bullet3D\ Practice}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*Author\ :\ Lucas\ García}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*Purpose\ :\ Physics\ Practice\ using\ Bullet\ that\ moves\ a\ tank\ and\ other\ features}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{**********************************************************************/}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <btBulletDynamicsCommon.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}Render\_Node.hpp"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}Graphics\_3D\_System.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <Physics\_3D\_System.h>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <Platform.h>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_physics__3_d___system}{Physics\_3D\_System}};}
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_graphics__3_d___system}{Graphics\_3D\_System}};}
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_entity}{Entity}};}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tank}{Tank}};}
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_contact_listener}{ContactListener}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_scene}{Scene}}}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00031\ \ \ \ \ std::shared\_ptr\ <\ Graphics\_3D\_System\ >\ graphics\_system;}
+\DoxyCodeLine{00032\ \ \ \ \ std::shared\_ptr\ <\ Physics\_3D\_System\ >\ physics\_system;}
+\DoxyCodeLine{00033\ \ \ \ \ std::shared\_ptr\ <ContactListener\ >\ contactListener;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ std::unique\_ptr<\ btDiscreteDynamicsWorld\ >\ dynamicsWorld;}
+\DoxyCodeLine{00036\ \ \ \ \ sf::Window\ window;}
+\DoxyCodeLine{00037\ \ \ \ \ std::map<std::string,\ std::shared\_ptr\ <Entity\ >>\ entities;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ std::shared\_ptr\ <Tank\ >\ tankCharacter;}
+\DoxyCodeLine{00040\ \ \ \ \ std::shared\_ptr\ <Entity\ >\ key;}
+\DoxyCodeLine{00041\ \ \ \ \ std::shared\_ptr\ <Platform>\ platform;}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{bool}\ running\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ \ frame\ =\ 0;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{class_scene}{Scene}}();}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{class_scene}{\string~Scene}}();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ addEntity(\textcolor{keyword}{const}\ std::string\&\ name,\ std::shared\_ptr<Entity>\ entity,\ \textcolor{keyword}{const}\ btVector3\&\ origin,}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ btVector3\&\ shapeSize,\ btScalar\ mass,\ btVector3\ scale,btVector3\ color);}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ addDoor(\textcolor{keyword}{const}\ std::string\&\ name,\ std::shared\_ptr<Entity>\ entity,\ \textcolor{keyword}{const}\ btVector3\&\ origin,}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ btVector3\&\ shapeSize,\ btScalar\ mass,\ btVector3\ scale,\ btVector3\ color);}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ addKey(\textcolor{keyword}{const}\ std::string\&\ name,\ std::shared\_ptr<Entity>\ entity,\ \textcolor{keyword}{const}\ btVector3\&\ origin,}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ btVector3\&\ shapeSize,\ btScalar\ mass,\ btVector3\ scale,\ btVector3\ color);}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ addPlatform(\textcolor{keyword}{const}\ std::string\&\ name,\ std::shared\_ptr<Platform>\ entity,\ \textcolor{keyword}{const}\ btVector3\&\ origin,}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ btVector3\&\ shapeSize,\ btScalar\ mass,\ btVector3\ scale,\ btVector3\ color);}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ addTank(\textcolor{keyword}{const}\ std::string\&\ name,\ std::shared\_ptr<Tank>\ tank);}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ run();}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ resetDynamicsWorld();\ \textcolor{comment}{//\ Nuevo\ método\ para\ resetear\ el\ dynamicsWorld}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \};}
+
+\end{DoxyCode}

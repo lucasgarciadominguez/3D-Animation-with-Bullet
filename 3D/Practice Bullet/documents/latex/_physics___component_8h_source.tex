@@ -1,0 +1,56 @@
+\doxysection{Physics\+\_\+\+Component.\+h}
+\hypertarget{_physics___component_8h_source}{}\label{_physics___component_8h_source}\index{D:/AnimationPracticeBulletLucasGarciaDominguez/3D/Practice Bullet/code/headers/Physics\_Component.h@{D:/AnimationPracticeBulletLucasGarciaDominguez/3D/Practice Bullet/code/headers/Physics\_Component.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/**********************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*Project\ \ \ \ \ \ \ \ \ \ \ :\ Bullet3D\ Practice}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*Author\ :\ Lucas\ García}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*Purpose\ :\ Physics\ Practice\ using\ Bullet\ that\ moves\ a\ tank\ and\ other\ features}}
+\DoxyCodeLine{00008\ \textcolor{comment}{*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{**********************************************************************/}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <btBulletDynamicsCommon.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <Render\_Node.hpp>}}
+\DoxyCodeLine{00017\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00018\ \textcolor{keyword}{using\ namespace\ }glt;}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_physics___component}{Physics\_Component}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00022\ \ \ \ \ std::shared\_ptr<btCollisionShape>\ collisionShape;}
+\DoxyCodeLine{00023\ \ \ \ \ std::shared\_ptr<btDefaultMotionState>\ motionState;}
+\DoxyCodeLine{00024\ \ \ \ \ std::shared\_ptr<btRigidBody>\ rigidBody;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_physics___component}{Physics\_Component}}(std::shared\_ptr<btCollisionShape>\ newcollisionShape,}
+\DoxyCodeLine{00029\ \ \ \ \ std::shared\_ptr<btDefaultMotionState>\ newmotionState,}
+\DoxyCodeLine{00030\ \ \ \ \ std::shared\_ptr<btRigidBody>\ newrigidBody)}
+\DoxyCodeLine{00031\ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ collisionShape\ =\ newcollisionShape;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ motionState\ =\ newmotionState;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ rigidBody\ =\ newrigidBody;}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{class_physics___component}{\string~Physics\_Component}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ btRigidBody*\ getRigidbody()}
+\DoxyCodeLine{00039\ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rigidBody.get();}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ glm::mat4\ getTransform()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ btTransform\ transform;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ rigidBody-\/>getMotionState()-\/>getWorldTransform(transform);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ glm::mat4\ graphics\_transform;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ transform.getOpenGLMatrix(glm::value\_ptr(graphics\_transform));}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ graphics\_transform;}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \};}
+
+\end{DoxyCode}

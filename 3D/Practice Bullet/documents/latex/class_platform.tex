@@ -1,0 +1,57 @@
+\doxysection{Platform Class Reference}
+\hypertarget{class_platform}{}\label{class_platform}\index{Platform@{Platform}}
+Inheritance diagram for Platform\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_platform}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_platform_aaead431c0874b2ad5447995993bd723f}\label{class_platform_aaead431c0874b2ad5447995993bd723f} 
+void {\bfseries move\+Platform} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_entity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+bt\+Rigid\+Body \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_entity_a25e023171a22a1d0824e577b5cea8838}{get\+Body}} () const
+\begin{DoxyCompactList}\small\item\em Gets the rigidbody component of the entity. \end{DoxyCompactList}\item 
+glm\+::mat4 \mbox{\hyperlink{class_entity_a3dc6842a50666f80b6ccecca8100f303}{get\+Transform}} () const
+\begin{DoxyCompactList}\small\item\em Gets the transform component of the entity. \end{DoxyCompactList}\item 
+Node \texorpdfstring{$\ast$}{*} {\bfseries get\+\_\+\+Graphic\+\_\+\+Model} ()
+\item 
+void {\bfseries add\+Graphic\+Component} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_graphic___component}{Graphic\+\_\+\+Component}} $>$ model)
+\item 
+void {\bfseries add\+Physics\+Component} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_physics___component}{Physics\+\_\+\+Component}} $>$ model)
+\item 
+void {\bfseries set\+Active} (bool state)
+\begin{DoxyCompactList}\small\item\em Makes the object visible when is selected. \end{DoxyCompactList}\item 
+bool {\bfseries is\+Active} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_platform_ad42d163770c2cc7b89e52f9a30595c9e}\label{class_platform_ad42d163770c2cc7b89e52f9a30595c9e} 
+std\+::shared\+\_\+ptr$<$ bt\+Vector3 $>$ {\bfseries start\+Point}
+\item 
+\Hypertarget{class_platform_adafe27f0663f379528d94ea5a12e5512}\label{class_platform_adafe27f0663f379528d94ea5a12e5512} 
+std\+::shared\+\_\+ptr$<$ bt\+Vector3 $>$ {\bfseries end\+Point}
+\item 
+\Hypertarget{class_platform_ab45d3be403a44f48f64cf6d17ef1c891}\label{class_platform_ab45d3be403a44f48f64cf6d17ef1c891} 
+std\+::shared\+\_\+ptr$<$ bt\+Vector3 $>$ {\bfseries velocity}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_entity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+bt\+Vector3 {\bfseries position}
+\item 
+bt\+Vector3 {\bfseries rotation}
+\item 
+bt\+Vector3 {\bfseries scale}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Animation\+Practice\+Bullet\+Lucas\+Garcia\+Dominguez/3\+D/\+Practice Bullet/code/headers/Platform.\+h\end{DoxyCompactItemize}

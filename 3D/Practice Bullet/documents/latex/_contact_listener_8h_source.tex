@@ -1,0 +1,120 @@
+\doxysection{Contact\+Listener.\+h}
+\hypertarget{_contact_listener_8h_source}{}\label{_contact_listener_8h_source}\index{D:/AnimationPracticeBulletLucasGarciaDominguez/3D/Practice Bullet/code/headers/ContactListener.h@{D:/AnimationPracticeBulletLucasGarciaDominguez/3D/Practice Bullet/code/headers/ContactListener.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <btBulletDynamicsCommon.h>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <Render\_Node.hpp>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <Entity.h>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <Tank.h>}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00024\ \textcolor{keyword}{using\ namespace\ }glt;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_contact_listener}{ContactListener}}\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00028\ \ \ \ \ std::shared\_ptr<Entity>\ key;}
+\DoxyCodeLine{00029\ \ \ \ \ std::shared\_ptr<Tank>\ tank;}
+\DoxyCodeLine{00030\ \ \ \ \ std::shared\_ptr<Entity>\ door;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ std::shared\_ptr<btVector3>\ startPoint;}
+\DoxyCodeLine{00033\ \ \ \ \ std::shared\_ptr<btVector3>\ \ endPoint;}
+\DoxyCodeLine{00034\ \ \ \ \ std::shared\_ptr<btVector3>\ \ velocity;}
+\DoxyCodeLine{00035\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{bool}\ openDoor\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00037\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{class_contact_listener}{ContactListener}}()}
+\DoxyCodeLine{00039\ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ startPoint\ =\ make\_shared<\ btVector3>(16,\ 3,\ 0);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ endPoint\ =\ make\_shared<\ btVector3>(16,\ 10,\ 0);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ velocity\ =\ make\_shared<\ btVector3>(0,\ 0.05,\ 0.);}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ addKey(std::shared\_ptr<Entity>\ newKey)\ }
+\DoxyCodeLine{00046\ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ key\ =\ newKey;}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ addTank(std::shared\_ptr<Tank>\ newTank)}
+\DoxyCodeLine{00051\ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ tank\ =\ newTank;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ door-\/>getBody()-\/>setIgnoreCollisionCheck(tank-\/>leftTrack-\/>getBody(),\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ door-\/>getBody()-\/>setIgnoreCollisionCheck(tank-\/>rightTrack-\/>getBody(),\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ door-\/>getBody()-\/>setIgnoreCollisionCheck(tank-\/>chasis-\/>getBody(),\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ tank-\/>leftTrack-\/>getBody()-\/>setIgnoreCollisionCheck(door-\/>getBody(),\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ tank-\/>rightTrack-\/>getBody()-\/>setIgnoreCollisionCheck(door-\/>getBody(),\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ tank-\/>chasis-\/>getBody()-\/>setIgnoreCollisionCheck(door-\/>getBody(),\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00059\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ addDoor(std::shared\_ptr<Entity>\ newDoor)}
+\DoxyCodeLine{00061\ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ door\ =\ newDoor;}
+\DoxyCodeLine{00063\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_contact_listener_a668e3fa84dfb4a547ee1c5328a86be21}{EnableDoor}}()}
+\DoxyCodeLine{00068\ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ btTransform\ transform;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ door-\/>getBody()-\/>getMotionState()-\/>getWorldTransform(transform);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ btVector3\ currentPosition\ =\ transform.getOrigin();}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ platform\ has\ reached\ the\ end\ point}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((currentPosition\ -\/\ *endPoint).length()\ <\ velocity-\/>length())\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ *velocity\ =\ btVector3(0,\ 0,\ 0);}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ openDoor\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Update\ the\ position\ of\ the\ platform}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ btVector3\ newPosition\ =\ currentPosition\ +\ *velocity;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ transform.setOrigin(newPosition);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ door-\/>getBody()-\/>getMotionState()-\/>setWorldTransform(transform);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ door-\/>getBody()-\/>setWorldTransform(transform);}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_contact_listener_a845e69f74342be4ebb2d77805af28b97}{RunContacts}}(btDynamicsWorld\&\ dynamicsWorld)}
+\DoxyCodeLine{00089\ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ btCollisionObject\&\ collisionTankLeftTrack\ =\ *tank-\/>leftTrack-\/>getBody();}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ btCollisionObject\&\ collisionTankRightTrack\ =\ *tank-\/>rightTrack-\/>getBody();}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ btCollisionObject\&\ collisionTankChassis\ =\ *tank-\/>chasis-\/>getBody();}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ btCollisionObject\&\ collisionKey\ =\ *key-\/>getBody();}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ manifold\_count\ =\ dynamicsWorld.getDispatcher()-\/>getNumManifolds();}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ manifold\_count;\ i++)}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ btPersistentManifold*\ manifold\ =}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dynamicsWorld.getDispatcher()-\/>getManifoldByIndexInternal(i);}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ btCollisionObject*\ object\_a\ =\ (btCollisionObject*)(manifold-\/>getBody0());}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ btCollisionObject*\ object\_b\ =\ (btCollisionObject*)(manifold-\/>getBody1());}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numContacts\ =\ manifold-\/>getNumContacts();}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ numContacts;\ j++)}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ btManifoldPoint\&\ point\ =\ manifold-\/>getContactPoint(j);}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (point.getDistance()\ <\ 0.f)}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (object\_a\ ==\ \&collisionTankLeftTrack\ \&\&\ object\_b\ ==\ \&collisionKey)\ ||}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (object\_a\ ==\ \&collisionKey\ \&\&\ object\_b\ ==\ \&collisionTankLeftTrack)\ ||\ (object\_a\ ==\ \&collisionTankRightTrack\ \&\&\ object\_b\ ==\ \&collisionKey)\ ||}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (object\_a\ ==\ \&collisionKey\ \&\&\ object\_b\ ==\ \&collisionTankRightTrack)\ ||\ (object\_a\ ==\ \&collisionTankChassis\ \&\&\ object\_b\ ==\ \&collisionKey)\ ||}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (object\_a\ ==\ \&collisionKey\ \&\&\ object\_b\ ==\ \&collisionTankChassis)}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ key-\/>setActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (door\ \&\&\ door-\/>getBody())\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ openDoor\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00121\ \ \ \ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \};}
+
+\end{DoxyCode}
