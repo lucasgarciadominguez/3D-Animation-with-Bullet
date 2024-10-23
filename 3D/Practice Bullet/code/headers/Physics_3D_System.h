@@ -42,10 +42,10 @@ class Physics_3D_System
         std::vector< std::shared_ptr< btRigidBody          > > rigidBodies;
         std::vector< std::shared_ptr< btDefaultMotionState > > motionStates;
         std::vector< std::shared_ptr< btCollisionShape     > > collisionShapes;
-        std::vector< std::shared_ptr< btGhostObject          > > sensorObjects;
-        std::vector< std::shared_ptr< btCollisionObject          > > collisionObjects;
+        std::vector< std::shared_ptr< btGhostObject        > > sensorObjects;
+        std::vector< std::shared_ptr< btCollisionObject    > > collisionObjects;
 
-public:
+    public:
 
         Physics_3D_System();
 
@@ -53,7 +53,6 @@ public:
 
         void stepSimulation(float timeStep);
         std::shared_ptr<btRigidBody> add_ComponentAndReturnRigidBody(Entity& entity, const btVector3& origin, const btVector3& shapeSize, btScalar mass);
-
         void add_Component(Entity& entity,
             const btVector3& origin, const btVector3& shapeSize, btScalar mass);
         void add_ComponentSensor(Entity& entity,
@@ -62,6 +61,7 @@ public:
             const btVector3& origin, const btVector3& shapeSize, btScalar mass);
         void add_ComponentSphere(Entity& entity,
             const btVector3& origin, const btVector3& shapeSize, btScalar mass);
+        std::shared_ptr<btRigidBody> createRigidBody(const btVector3& origin, const btVector3& shapeSize, btScalar mass);
         btDynamicsWorld* getDynamicsWorld() const;
 
    

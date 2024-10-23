@@ -28,6 +28,7 @@ public:
 
     void initialize(const sf::Window& window);
     void create_scene_basics_glt();
+    void addComponent(const std::string& name, Entity& entity, const std::string& modelPath, btVector3 scaleObject, btVector3 color);
     void add_Component(const std::string& name, Entity& entity, btVector3 scale, btVector3 color);
     void add_ComponentKey(const std::string& name, Entity& entity, btVector3 scaleObject, btVector3 color);
     void add_ComponentSphere(const std::string& name, Entity& entity, btVector3 scaleObject, btVector3 color);

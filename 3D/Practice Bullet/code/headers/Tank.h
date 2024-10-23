@@ -52,6 +52,6 @@ class Tank : public Entity{
         shared_ptr<btFixedConstraint> canyonConstraint;
         std::shared_ptr<Projectile> projectile;
         vector< shared_ptr< Projectile > > projectiles;
-        size_t nextProjectileIndex; // Índice del siguiente proyectil disponible
+        size_t nextProjectileIndex; // index of the next projectile available
 
 };

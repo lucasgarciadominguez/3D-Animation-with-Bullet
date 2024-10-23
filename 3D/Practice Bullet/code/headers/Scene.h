@@ -57,6 +57,10 @@ public:
         const btVector3& shapeSize, btScalar mass, btVector3 scale, btVector3 color);
     void addTank(const std::string& name, std::shared_ptr<Tank> tank);
     void run();
-    void resetDynamicsWorld(); // Nuevo método para resetear el dynamicsWorld
+    void handleTankMovement();
+    void applyTankForce(const btVector3& force, const btMatrix3x3& rotation);
+    void applyTankTurningForce(const btVector3& leftForce, const btVector3& rightForce, const btMatrix3x3& rotation);
+    void updateGraphicsTransforms();
+    void resetDynamicsWorld(); // new mehtod for resetting the dynamicsword
 
 };

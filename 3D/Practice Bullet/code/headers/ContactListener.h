@@ -1,8 +1,12 @@
-/**
- * \author Lucas Garcia
- * \version 1.0
- * \date 2024-06-05
- */
+/**********************************************************************
+*Project           : Bullet3D Practice
+*
+*Author : Lucas García
+*
+*
+*Purpose : Physics Practice using Bullet that moves a tank and other features
+*
+**********************************************************************/
 
  /**
   * \class ContactListener

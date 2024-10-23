@@ -1,8 +1,12 @@
-/**
- * \author Lucas Garcia
- * \version 1.0
- * \date 2024-06-05
- */
+/**********************************************************************
+*Project           : Bullet3D Practice
+*
+*Author : Lucas García
+*
+*
+*Purpose : Physics Practice using Bullet that moves a tank and other features
+*
+**********************************************************************/
 
  /**
   * \class Entity
@@ -37,6 +41,7 @@ public:
  * \param[out] btRigidBody* Gets the physic component of the entity in a pointer of a btRigidBody class of Bullet.
  */
     btRigidBody* getBody() const;
+    std::shared_ptr<btRigidBody> getSharedBody() const;
     /**
  * \brief Gets the transform component of the entity.
  * \param[out] mat4 Gets the transform matrix in a mat4 class of glm.

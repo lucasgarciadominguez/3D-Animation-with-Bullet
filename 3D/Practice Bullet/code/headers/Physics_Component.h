@@ -41,6 +41,10 @@ public:
     {
         return rigidBody.get();
     }
+    std::shared_ptr<btRigidBody> getSharedRigidbody()
+    {
+        return rigidBody;
+    }
     glm::mat4 getTransform() const {
         btTransform transform;
         rigidBody->getMotionState()->getWorldTransform(transform);

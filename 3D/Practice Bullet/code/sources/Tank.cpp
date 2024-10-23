@@ -1,16 +1,14 @@
 /**********************************************************************
-*Project           : Bullet3D Practice
+* Project           : Bullet3D Practice
 *
-*Author : Lucas García
+* Author            : Lucas García
 *
-*
-*Purpose : Physics Practice using Bullet that moves a tank and other features
+* Purpose           : Physics Practice using Bullet that moves a tank and other features.
 *
 **********************************************************************/
 
 #include <iostream>
 #include <vector>
-
 #include "Tank.h"
 #include <glm/gtc/type_ptr.hpp>
 #include <Model.hpp>
@@ -27,48 +25,61 @@
 using namespace std;
 using namespace glt;
 
-Tank::Tank() {
+/**
+ * Constructor for the Tank class.
+ * Initializes the tank components (left track, right track, chassis, turret, and cannon).
+ */
+Tank::Tank()
+    : nextProjectileIndex(0)  // Initialize the projectile index
+{
+    // Initialize the tank components
     leftTrack = make_shared<Entity>();
     rightTrack = make_shared<Entity>();
     chasis = make_shared<Entity>();
-    turret=make_shared<Entity>();
+    turret = make_shared<Entity>();
     canyon = make_shared<Entity>();
-    nextProjectileIndex=0;
-
-
 }
 
+/**
+ * Destructor for the Tank class.
+ * No explicit cleanup required here, as shared_ptr will automatically manage memory.
+ */
 Tank::~Tank() {
-    // Destructor cleanup if necessary
+    // Destructor cleanup if necessary (automatic with shared_ptr)
 }
-void Tank::shootProjectile(shared_ptr<Graphics_3D_System> graphicsSystem,shared_ptr<Physics_3D_System> physicsSystem,
-    std::map<std::string, std::shared_ptr <Entity >> entities) {
 
-    //// Obtener la transformación actual del cañón
+/**
+ * Fires a projectile from the tank's cannon.
+ * @param graphicsSystem Shared pointer to the graphics system.
+ * @param physicsSystem Shared pointer to the physics system.
+ * @param entities Map of the entities in the scene.
+ */
+void Tank::shootProjectile(shared_ptr<Graphics_3D_System> graphicsSystem, shared_ptr<Physics_3D_System> physicsSystem,
+    std::map<std::string, std::shared_ptr<Entity>> entities)
+{
+    // Get the current transformation of the cannon
     btTransform canyonTransform;
     canyon->getBody()->getMotionState()->getWorldTransform(canyonTransform);
 
-    //// Calcular la posición inicial del proyectil, desplazada hacia adelante
+    // Calculate the initial position of the projectile, slightly forward of the cannon
     btVector3 projectilePosition = canyonTransform.getOrigin() + canyonTransform.getBasis() * btVector3(0, 0, -0.5f);
+
+    // Set the new transformation for the projectile
     btTransform newTransform;
-    newTransform.setIdentity(); // Restablecer la transformación a la identidad (sin cambios)
-    newTransform.setOrigin(projectilePosition); // Establecer la nueva posición del RigidBody
+    newTransform.setIdentity();  // Reset to identity matrix (no scaling or rotation)
+    newTransform.setOrigin(projectilePosition);  // Set the new position of the projectile
 
-    // Aplicar una fuerza de disparo a la bala
-    btVector3 forwardDirection = canyonTransform.getBasis() * btVector3(0, 0, -1);
-    btScalar shootingForce = 3000.0f;  // Magnitud de la fuerza de disparo
-    btVector3 shootingForceVector = forwardDirection * shootingForce;  // Vector de fuerza de disparo
+    // Calculate the shooting force in the forward direction of the cannon
+    btVector3 forwardDirection = canyonTransform.getBasis() * btVector3(0, 0, -1);  // Direction the cannon is facing
+    btScalar shootingForce = 3000.0f;  // Magnitude of the shooting force
+    btVector3 shootingForceVector = forwardDirection * shootingForce;  // Force vector for the projectile
 
-    projectiles[nextProjectileIndex]->setActive(true);
-    projectiles[nextProjectileIndex]->getBody()->setWorldTransform(newTransform);
-    projectiles[nextProjectileIndex]->getBody()->applyCentralForce(shootingForceVector);
+    // Activate the next projectile and apply the transformation and force
+    auto& projectile = projectiles[nextProjectileIndex];  // Get the current projectile
+    projectile->setActive(true);  // Activate the projectile
+    projectile->getBody()->setWorldTransform(newTransform);  // Set the new transform (position)
+    projectile->getBody()->applyCentralForce(shootingForceVector);  // Apply the shooting force
 
-    if (nextProjectileIndex==projectiles.size()-1)
-    {
-        nextProjectileIndex=0;
-    }
-    else
-    {
-        nextProjectileIndex++;
-    }
+    // Update the index to point to the next projectile in the list
+    nextProjectileIndex = (nextProjectileIndex + 1) % projectiles.size();  // Wrap around when the last projectile is reached
 }
