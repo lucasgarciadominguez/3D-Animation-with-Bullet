@@ -23,7 +23,7 @@ Below is a non-exhaustive list of technologies used throughout the project.
             </tr>
             <tr>
               <td>OpenGL</td>
-              <td>2.1.0</td>
+              <td>Toolkit</td>
             </tr>
              <tr>
               <td>SFML</td>
